@@ -13,7 +13,7 @@ class precio(models.Model):
     producto_fk=models.ForeignKey('producto')
     tienda_fk=models.ForeignKey('tienda')
     def __unicode__(self):
-        return self.cantidad
+        return self.cantidad.__str__()
 
 class producto(models.Model):
     nombre = models.CharField(max_length=30)

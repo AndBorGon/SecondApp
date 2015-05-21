@@ -2,7 +2,9 @@
 import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+RUTA_PROYECTO = os.path.dirname(os.path.realpath(__file__))
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -101,13 +103,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'SecondApp.urls'
+ROOT_URLCONF = 'principal.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'SecondApp.wsgi.application'
-
-import os
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -122,6 +121,11 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR,'templates'),
+)
+MEDIA_ROOT= os.path.join(RUTA_PROYECTO,'media')
+# Application definition
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
