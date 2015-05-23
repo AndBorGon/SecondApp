@@ -5,6 +5,15 @@
     <title></title>
 </head>
 <body>
+{% block contenido %}
+<form id='formulario' method='POST' action='verrecomendacion'>
+    {% csrf_token %}
+    {{ formulario}}
+
+    <p><input type="submit" value="Recomendar" /></p>
+    </form>
+
+{% endblock %}
 
 </body>
 </html>
