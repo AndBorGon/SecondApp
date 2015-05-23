@@ -15,14 +15,16 @@ def usuarios(request):
     return render_to_response('usuario.html',{'users':users})
 
 def verrecomendacion(request):
-    cargar()
-    dato = request.POST.get('user')
-    usuario = Usuario.objects.get(username=dato)
-    print usuario.username
-    print puntuacionestotales
-    print getRecommendations(puntuacionestotales,usuario.username)
 
-    return render_to_response('verrecomendacion.html',{'usuario':usuario})
+    dato = request.POST.get('user')
+    try:
+        usuario = Usuario.objects.get(username=dato)
+        cargar()
+        rec = getRecommendations(puntuacionestotales,usuario.username)[0:2]
+        print rec
+    except :
+        rec = None
+    return render_to_response('verrecomendacion.html',{'rec':rec})
 
 
 def recomendacion(request):

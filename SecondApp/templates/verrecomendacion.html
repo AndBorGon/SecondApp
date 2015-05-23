@@ -5,12 +5,13 @@
     <title></title>
 </head>
 <body>
-<ul>    {% if usuario %}
-    <li> User: {{ usuario.username }}</li>
-    <li> Nombre: {{ usuario.first_name }}</li>
-        {% else %}
-    <li>No existe ningun usuario con ese nombre de usuario</li>
-        {% endif %}
+<ul>{% if recomendacion == None %}
+    {% for recomendacion in rec %}
+        <li> Recomendacion: {{ recomendacion.1 }}</li>
+    {% endfor %}
+    {% else %}
+        <li>El usuario no existe</li>
+    {% endif %}
 </ul>
 </body>
 </html>
