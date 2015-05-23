@@ -12,6 +12,7 @@ class precio(models.Model):
     cantidad = models.IntegerField()
     producto_fk=models.ForeignKey('producto')
     tienda_fk=models.ForeignKey('tienda')
+
     def __unicode__(self):
         return self.cantidad.__str__()
 
@@ -28,6 +29,8 @@ class clasificationproducto(models.Model):
     puntuaction=models.CharField(choices=puntuaciones,default='medio',max_length=30)
     producto=models.ForeignKey('producto')
     usuario_pd_fk=models.ForeignKey('Usuario')
+    class Meta:
+        unique_together = ('usuario_pd_fk', 'producto',)
     def __unicode__(self):
         return self.puntuaction
 
