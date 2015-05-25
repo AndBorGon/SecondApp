@@ -13,4 +13,4 @@ def cargar():
             productosmap[usuario].update({pro.__str__() : puntuaciones.get(clasificationproducto.objects.get(producto=pro,usuario_pd_fk=usuario).__str__())})
         puntuacion.update({usuario.username: productosmap[usuario]})
     globals()['puntuacionestotales']= puntuacion
-    print puntuacionestotales
+    #print "Sistema De Recomendacion Cargada/Actualizada"

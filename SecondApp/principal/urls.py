@@ -4,13 +4,14 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('SecondApp.views',
     # Examples:
-    url(r'^$', 'SecondApp.views.home', name='home'),
+    url(r'^$', 'home', name='home'),
     # url(r'^SecondApp/', include('SecondApp.foo.urls')),
-    url(r'^usuario', 'SecondApp.views.usuarios',name='usuarios'),
-    url(r'^recomendacion', 'SecondApp.views.recomendacion',name='recomendacion'),
-    url(r'^verrecomendacion', 'SecondApp.views.verrecomendacion',name='verrecomendacion'),
+    url(r'^usuario', 'usuarios',name='usuarios'),
+    url(r'^recomendacion', 'recomendacion',name='recomendacion'),
+    url(r'^verrecomendacion', 'verrecomendacion',name='verrecomendacion'),
+     url(r'^index', 'home'),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next line to enable the admin:

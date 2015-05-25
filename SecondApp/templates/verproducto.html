@@ -5,9 +5,9 @@
     <title></title>
 </head>
 <body>
-<ul>{% if rec != None %}
-        {% for recomendacion in rec %}
-            <li> Recomendacion: {{ recomendacion.1 }}</li>
+<ul>{% if product != None %}
+        {% for pro in product %}
+            <li> Recomendacion: {{ pro }}</li>
         {% endfor %}
     {% else %}
         <li>El usuario no existe</li>
