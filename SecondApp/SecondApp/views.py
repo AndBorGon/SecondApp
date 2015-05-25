@@ -11,22 +11,17 @@ def home(request):
 
 def usuarios(request):
     users = Usuario.objects.all()
-    print users
     return render_to_response('usuario.html',{'users':users})
 
 def verrecomendacion(request):
 
     dato = request.POST.get('user')
-    #puntuacion = request.POST.get('puntuacion')
     try:
         usuario = Usuario.objects.get(username=dato)
-        #usuariover=Usuario.objects.get(username=puntuacion)
         cargar()
         rec = getRecommendations(puntuacionestotales,usuario.username)[0:2]
-        #print usuario
     except :
         rec = None
-        #usuariover = None
     return render_to_response('verrecomendacion.html',{'rec':rec})
 
 
@@ -50,9 +45,24 @@ def productos(request):
 
 def verproducto(request):
     dato = request.POST.get('producto')
-    product = producto.objects.get(nombre=dato)
-    #product = producto.objects.get(nombre=dato)
-    #print product.tienda_that_belongs.all()
+    try:
+        product = producto.objects.get(nombre=dato)
+    except:
+        product = None
     return render_to_response('verproducto.html',{'product':product})
 
-
+def addusuario(request):
+    if request.method == 'POST':
+        formulariouser = AddUserForm(request.POST)
+        if formulariouser.is_valid():
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            email = request.POST.get('email')
+            birth = request.POST.get('birth')
+            Usuario.objects.create(first_name=first_name,last_name=last_name,username=username,password=password,email=email,birth=birth)
+            return HttpResponseRedirect('/addusuario')
+    else:
+        formulariouser = AddUserForm()
+    return  render_to_response('addusuario.html',{'formulariouser':formulariouser},context_instance=RequestContext(request))

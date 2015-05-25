@@ -5,11 +5,12 @@
     <title></title>
 </head>
 <body>
+<li><a href='index.html'>Inicio</a></li>
 {% block contenido %}
-<form id='formulario' method='POST' action='verrecomendacion.html'>
+<form id='formulario' method='POST' action='addusuario.html'>
     {% csrf_token %}
-    {{ formulario}}
-    <p><input type="submit" value="Recomendar" /></p>
+    {{ formulariouser.as_p}}
+    <p><input type="submit" value="Guardar" /></p>
     </form>
 
 {% endblock %}
