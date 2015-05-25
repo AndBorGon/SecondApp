@@ -6,11 +6,17 @@
 </head>
 <body>
 <ul>{% if product != None %}
-        {% for pro in product %}
-            <li> Recomendacion: {{ pro }}</li>
+        <li>{{ product.nombre }}</li>
+        <li>{{ product.descripcion }}</li>
+        <li>{{ product.categoria }}</li>
+        <ul>Tienda del producto
+        {% for tienda in product.tienda_that_belongs.all %}
+                <li>{{ tienda.nombre }}</li>
+                <li>{{ tienda.url }}</li>
         {% endfor %}
+        </ul>
     {% else %}
-        <li>El usuario no existe</li>
+        <li>El producto no existe</li>
     {% endif %}
 </ul>
 </body>

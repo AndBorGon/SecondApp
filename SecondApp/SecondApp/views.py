@@ -2,7 +2,7 @@
 from principal.models import *
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
-from principal.form import ContactoForm
+from principal.form import *
 from django.shortcuts import render_to_response,get_object_or_404
 from SistReco.Sistemanuestro import *
 from SistReco.recommendations import *
@@ -37,9 +37,22 @@ def recomendacion(request):
             return HttpResponseRedirect('/verrecomendacion')
     else:
         formulario = ContactoForm()
-    return  render_to_response('recomendacion.html',{'formulario':formulario},context_instance=RequestContext(request))
+    return render_to_response('recomendacion.html',{'formulario':formulario},context_instance=RequestContext(request))
 
+def productos(request):
+    if request.method == 'POST':
+        formulario = ProductoForm(request.POST)
+        if formulario.is_valid():
+            return HttpResponseRedirect('/verproducto')
+    else:
+        formulario = ProductoForm()
+    return  render_to_response('producto.html',{'formulario':formulario},context_instance=RequestContext(request))
 
-
+def verproducto(request):
+    dato = request.POST.get('producto')
+    product = producto.objects.get(nombre=dato)
+    #product = producto.objects.get(nombre=dato)
+    print product.tienda_that_belongs.all()
+    return render_to_response('verproducto.html',{'product':product})
 
 

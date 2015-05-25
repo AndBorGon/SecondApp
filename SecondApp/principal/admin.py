@@ -18,6 +18,7 @@ class UsuarioAdmin(admin.ModelAdmin):
     list_display = ['__unicode__','first_name','email','date_joined']
 class ClassificationProduct(admin.ModelAdmin):
     list_display = ['puntuaction','usuario_pd_fk','producto']
+
 admin.site.register(Usuario,UsuarioAdmin)
 admin.site.register(producto)
 admin.site.register(precio)

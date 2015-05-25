@@ -8,6 +8,8 @@ urlpatterns = patterns('SecondApp.views',
     # Examples:
     url(r'^$', 'home', name='home'),
     # url(r'^SecondApp/', include('SecondApp.foo.urls')),
+    url(r'^producto','productos',name='producto'),
+    url(r'^verproducto','verproducto',name='producto'),
     url(r'^usuario', 'usuarios',name='usuarios'),
     url(r'^recomendacion', 'recomendacion',name='recomendacion'),
     url(r'^verrecomendacion', 'verrecomendacion',name='verrecomendacion'),
