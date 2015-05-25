@@ -52,7 +52,7 @@ def verproducto(request):
     dato = request.POST.get('producto')
     product = producto.objects.get(nombre=dato)
     #product = producto.objects.get(nombre=dato)
-    print product.tienda_that_belongs.all()
+    #print product.tienda_that_belongs.all()
     return render_to_response('verproducto.html',{'product':product})
 
 

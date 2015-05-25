@@ -9,12 +9,14 @@
         <li>{{ product.nombre }}</li>
         <li>{{ product.descripcion }}</li>
         <li>{{ product.categoria }}</li>
-        <ul>Tienda del producto
+
         {% for tienda in product.tienda_that_belongs.all %}
+            <ul>Tienda del producto
                 <li>{{ tienda.nombre }}</li>
                 <li>{{ tienda.url }}</li>
+            </ul>
         {% endfor %}
-        </ul>
+
     {% else %}
         <li>El producto no existe</li>
     {% endif %}

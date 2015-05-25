@@ -12,10 +12,10 @@ class precio(models.Model):
     cantidad = models.IntegerField()
     producto_fk=models.ForeignKey('producto')
     tienda_fk=models.ForeignKey('tienda')
-
     def __unicode__(self):
         return self.cantidad.__str__()
-
+    class Meta:
+        unique_together = ('cantidad', 'producto_fk','tienda_fk',)
 class producto(models.Model):
     nombre = models.CharField(max_length=30)
     descripcion = models.TextField(max_length=200)
